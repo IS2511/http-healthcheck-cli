@@ -7,7 +7,12 @@ mod args;
 async fn main() -> Result<(), Box<dyn Error>> {
     let args = args::Args::parse();
 
-    let url = reqwest::Url::parse(args.url.as_str())?;
+    let url = reqwest::Url::parse(args.url.as_str());
+
+    if url.is_err() {
+        println!("URL parsing error");
+    }
+    let url = url?;
 
     let client = reqwest::Client::builder()
         .timeout(Duration::from_secs(args.timeout))
