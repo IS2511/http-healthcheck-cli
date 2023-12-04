@@ -13,7 +13,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
         .timeout(Duration::from_secs(args.timeout))
         .build()?;
 
-    let mut interval = tokio::time::interval(Duration::from_secs(args.interval as u64));
+    let mut interval = tokio::time::interval(Duration::from_secs(args.interval));
 
     loop {
         let url = url.clone();
