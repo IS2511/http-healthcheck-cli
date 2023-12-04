@@ -10,8 +10,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
     let url = reqwest::Url::parse(args.url.as_str())?;
 
     let client = reqwest::Client::builder()
-        .connect_timeout(Duration::from_secs(3))
-        .timeout(Duration::from_secs(2))
+        .timeout(Duration::from_secs(args.timeout))
         .build()?;
 
     let mut interval = tokio::time::interval(Duration::from_secs(args.interval as u64));

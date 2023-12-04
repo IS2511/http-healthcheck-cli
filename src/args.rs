@@ -10,4 +10,8 @@ pub struct Args {
     /// Request interval in seconds
     #[arg(short, long)]
     pub interval: u32,
+
+    /// Request timeout in seconds
+    #[arg(short, long, default_value_t = 3)]
+    pub timeout: u64,
 }
